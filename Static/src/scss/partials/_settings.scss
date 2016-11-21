@@ -40,7 +40,11 @@ $susy: (
 // Fonts
 // ------------------------------------------------------------------------------
 
-$helvetica: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$open-sans: "Open Sans", sans-serif;
+$raleway: "Raleway", sans-serif;
+
+$font-body: $open-sans;
+$font-heading: $raleway;
 
 // Colors
 // ------------------------------------------------------------------------------

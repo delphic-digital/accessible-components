@@ -1,14 +1,20 @@
 
 @import "fonts";
 
-h1 {}
-h2 {}
-h3 {}
+html {  }
+h1,h2,h3,h4,h5,h6
+{
+	font-family: $font-heading;
+	text-transform: uppercase;
+}
 
-body {}
+body 
+{
+	font-family: $font-body;
+}
 
 a {}
 
-p {}
+p { font-size: rem(14); }
 
 ul {}
