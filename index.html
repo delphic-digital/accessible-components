@@ -15,8 +15,31 @@
 
 	</head>
 	<body>
-		<main class="hidden-sm">
-			<div class="skeletor-component js-skeletor-guy" data-component="skeletor-guy"></div>
+		<main class="components">
+			<section class="components__item components__item--accordion">
+				<h2 class="components__title">Accordion</h2>
+				<p class="components__description>">A short description of the component</p>
+				<div class="components__example accordion" data-component="accordion">
+					<p class="accordion__tab">Panel 1<span class="accordion__icon"></span></p>
+					<p class="accordion__panel">Here is the text for Panel 1</p>
+					<p class="accordion__tab">Panel 2<span class="accordion__icon"></span></p>
+					<p class="accordion__panel">Here is the text for Panel 2</p>
+					<p class="accordion__tab">Panel 3<span class="accordion__icon"></span></p>
+					<p class="accordion__panel">Here is the text for Panel 3</p>
+
+					<!-- <form> 
+						<div id="accordian1" class="tabpanel" role="tablist" multiselectable="true"> 
+						  <h3 id="tab1" class="tab accordian" aria-selected="true" aria-controls="panel1" aria-expanded="true" role="tab" tabindex="0"> 
+						    <img src="http://www.oaa-accessibility.org/media/examples/images/expanded.gif" alt="expanded" /> 
+						    Crust 
+						  </h3> 
+						  <div id="panel1" class="panel accordian" aria-labelledby="tab1" aria-hidden="false" role="tabpanel"> 
+						    <h3 id="crust-label">Select Crust</h3>  
+						  </div> 
+						</div> 
+					</form> -->
+				</div>
+			</section>
 		</main>
 
 		<script data-main="/Static/src/js/skeletor.main" src="/Static/dist/js/lib/require.js"></script>

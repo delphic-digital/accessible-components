@@ -1,0 +1,56 @@
+.accordion
+{
+	&__tab
+	{
+		position: relative;
+		margin: 0;
+		padding: rem(10);
+		background: $silver;
+		border-bottom: 1px solid $white;
+		cursor: pointer;
+
+		&:last-of-type { border-bottom: none; }
+	}
+
+	&__panel 
+	{ 
+		display: none; 
+		margin: 0;
+		padding: rem(20) rem(10);
+		background: $white;
+	}
+
+	&__icon
+	{
+		position: absolute;
+		content: "";
+		top: 17px;
+		right: 20px;
+		width: 18px;
+		height: 2px;
+		background: #fff;
+		border-radius: 1px;
+
+		&:after
+		{
+			position: absolute;
+			content: "";
+			top: -8px;
+			right: 8px;
+			width: 2px;
+			height: 18px;
+			background: #fff;
+			border-radius: 1px;
+			transition: opacity 300ms ease;
+		}
+
+		&.open
+		{
+			&:after 
+			{ 
+				opacity: 0; 
+				transition: opacity 300ms ease;
+			}
+		}
+	}
+}
