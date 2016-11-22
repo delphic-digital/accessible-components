@@ -24,11 +24,12 @@ define(['jquery'],function($) {
 				$clickedTab.children('.accordion__icon').toggleClass('open');
 
 				if ( $clickedTab.children('.accordion__icon').hasClass('open') ){
+					$panel = $clickedTab.next('.accordion__panel');
 					_.setAriaVisible($clickedTab);
+					_.getNextFocusable($panel);
 				} else {
 					_.setAriaHidden($clickedTab);
 				}
-				
   			});
 		},
 
@@ -72,19 +73,33 @@ define(['jquery'],function($) {
 					'aria-labelledby': 'a' + i + '_tab' + j
 				});
 			})
-				
 		},
 
 		setAriaVisible: function($clickedTab) {
 			$clickedTab.attr('aria-expanded', 'true');
 			$clickedTab.next('[aria-hidden=true]').attr('aria-hidden', 'false');
-
 		},
 
 		setAriaHidden: function($clickedTab) {
 			$clickedTab.attr('aria-expanded', 'false');
 			$clickedTab.next('[aria-hidden=false]').attr('aria-hidden', 'true');
+		},
 
+		getNextFocusable: function($panel) {
+			// http://jsfiddle.net/TrueBlueAussie/5WkVW/12/
+			// register jQuery extension
+			$.extend(jQuery.expr[':'], {
+				focusable: function (el, index, selector) {
+					return $(el).is('a, button, :input, [tabindex]');
+				}
+			});
+
+			if ( $panel.children(':focusable').length > 0 ) {
+				var $canfocus = $(':focusable');
+				var index = $canfocus.index(document.activeElement) + 1;
+				if (index >= $canfocus.length) index = 0;
+				$canfocus.eq(index).focus();
+			}     
 		},
 
 		destroy: function() { }
