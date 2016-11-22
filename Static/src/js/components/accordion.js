@@ -18,28 +18,48 @@ define(['jquery'],function($) {
 
 		initClickEvent: function() {
 			var _ = this;
+			let keys = [];
 
 			_.settings.$tab.off().on('click keydown', function(e) {
-				$clickedTab = $(this);
+				let $clickedTab = $(this);
+				keys[e.keyCode] = true;
+				console.log(keys);
 
-				if ( e.type == 'click' || e.keyCode == 13 || e.keyCode == 32 ) { 
+				if ( e.type == 'click' || keys[13] || keys[32] ) { 
 					$clickedTab.next('.accordion__panel').slideToggle(300);
 					$clickedTab.children('.accordion__icon').toggleClass('open');
 
 					if ( $clickedTab.children('.accordion__icon').hasClass('open') ){
 						$panel = $clickedTab.next('.accordion__panel');
 						_.setAriaVisible($clickedTab);
-						_.getNextFocusable($panel);
+						// _.getNextFocusable($panel);
 					} else {
 						_.setAriaHidden($clickedTab);
 					} 
-				} else if ( e.keyCode == 39 || e.keyCode == 40 ) {
+				}
+				// functionality for 'up' or 'left' arrow keys 
+				else if ( keys[37] || keys[38] ) {
+					var $id = '#' + $clickedTab.parents('.accordion').attr('id') + ' .accordion__tab';
+					var index = $($id).index(document.activeElement) - 1;
+					if (index >= $($id).length) index = 0;
+					$($id).eq(index).focus();
+				} 
+				// functionality for 'down' or 'right' keys
+				else if ( keys[39] || keys[40] ) {
 					var $id = '#' + $clickedTab.parents('.accordion').attr('id') + ' .accordion__tab';
 					var index = $($id).index(document.activeElement) + 1;
 					if (index >= $($id).length) index = 0;
 					$($id).eq(index).focus();
-					}
+				} 
+				// functionality for 'CTRL' + 'up' arrow key
+				else if ( keys[17] == true && keys[38] == true ) {
+					alert('hi');
+				}
   			});
+
+  			_.settings.$tab.on('keyup', function(e) {
+  				keys[e.keyCode] = false;
+  			})
 		},
 
 		bindKeyEvents: function() {
