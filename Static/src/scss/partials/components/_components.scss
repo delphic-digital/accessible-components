@@ -1,7 +1,14 @@
 .components
 {
 	width: 600px;
-	margin: rem(30) auto;
-	padding: rem(30);
-	background: $component-background;
+	margin: 0 auto;
+	
+	
+
+	&__item
+	{
+		margin: rem(30) 0;
+		padding: rem(30);
+		background: $component-background;
+	}
 }

@@ -1,4 +1,4 @@
-define(['jquery'],function($) {
+define(['jquery', './common/events', './common/aria'],function($, events, aria) {
 
 	return {
 
@@ -11,128 +11,55 @@ define(['jquery'],function($) {
 		init: function() {
 			var _ = this;
 
-			_.bindKeyEvents();
-			_.bindAriaEvents();
-			_.initClickEvent();
+			_.bindAria();
+			_.initEvents();
 		},
 
-		initClickEvent: function() {
+		bindAria: function() {
 			var _ = this;
-			let keys = [];
+			aria.bindAccordion(_.settings.$accordion, _.settings.$tab, _.settings.$panel);
+		},
+
+		initEvents: function() {
+			var _ = this;
 
 			_.settings.$tab.off().on('click keydown', function(e) {
 				let $clickedTab = $(this);
-				keys[e.keyCode] = true;
-				console.log(keys);
+				let $panel = _.settings.$panel;
 
-				if ( e.type == 'click' || keys[13] || keys[32] ) { 
-					$clickedTab.next('.accordion__panel').slideToggle(300);
-					$clickedTab.children('.accordion__icon').toggleClass('open');
+				if ( e.type == 'click' ) {
+					events.openSlide($clickedTab,$panel,'.accordion__icon');
+				} else {
+					switch(e.keyCode) {
+						// enter or spacebar
+						case 13:
+						case 32:
+						events.openSlide($clickedTab,$panel,'.accordion__icon');
+						break;
 
-					if ( $clickedTab.children('.accordion__icon').hasClass('open') ){
-						$panel = $clickedTab.next('.accordion__panel');
-						_.setAriaVisible($clickedTab);
-						// _.getNextFocusable($panel);
-					} else {
-						_.setAriaHidden($clickedTab);
-					} 
-				}
-				// functionality for 'up' or 'left' arrow keys 
-				else if ( keys[37] || keys[38] ) {
-					var $id = '#' + $clickedTab.parents('.accordion').attr('id') + ' .accordion__tab';
-					var index = $($id).index(document.activeElement) - 1;
-					if (index >= $($id).length) index = 0;
-					$($id).eq(index).focus();
-				} 
-				// functionality for 'down' or 'right' keys
-				else if ( keys[39] || keys[40] ) {
-					var $id = '#' + $clickedTab.parents('.accordion').attr('id') + ' .accordion__tab';
-					var index = $($id).index(document.activeElement) + 1;
-					if (index >= $($id).length) index = 0;
-					$($id).eq(index).focus();
-				} 
-				// functionality for 'CTRL' + 'up' arrow key
-				else if ( keys[17] == true && keys[38] == true ) {
-					alert('hi');
-				}
-  			});
+						// up or left arrow keys
+						case 37:
+						case 38:
+						events.goPrev($clickedTab);
+						break;
 
-  			_.settings.$tab.on('keyup', function(e) {
-  				keys[e.keyCode] = false;
-  			})
-		},
+						// down or right arrow keys
+						case 39:
+						case 40:
+						events.goNext($clickedTab);
+						break;
 
-		bindKeyEvents: function() {
-			var _ = this;
-		},
+						// tab
+						case 9:
+						//do nothing, functionality already there
+						break;
 
-		bindAriaEvents: function() {
-			var _ = this;
-
-			$(_.settings.$accordion).each(function(i){
-				var $this = $(this);
-				$this.attr('id', 'accordion_' + i);
-
-				_.setDefaultAriaAttributes($this, i);
-			});
-		},
-
-		setDefaultAriaAttributes: function($this, i) {
-			var _ = this;
-
-			_.settings.$accordion
-				.attr({
-					'role': 'tablist',
-					'multiselectable': 'true'
-			});
-
-			$this.find(_.settings.$tab).each(function(j){
-				var $this = $(this);
-				$this.attr({
-					'id': 'a' + i + '_tab' + j,
-					'role': 'tab',
-					'tabindex': '0',
-					'aria-expanded': 'false',
-					'aria-controls': 'a' + i + '_panel' + j
-				});
-			})
-				
-			$this.find(_.settings.$panel).each(function(j){
-				var $this = $(this);
-				$this.attr({
-					'id': 'a' + i + '_panel' + j,
-					'role': 'tabpanel',
-					'aria-hidden': 'true',
-					'aria-labelledby': 'a' + i + '_tab' + j
-				});
-			})
-		},
-
-		setAriaVisible: function($clickedTab) {
-			$clickedTab.attr('aria-expanded', 'true');
-			$clickedTab.next('[aria-hidden=true]').attr('aria-hidden', 'false');
-		},
-
-		setAriaHidden: function($clickedTab) {
-			$clickedTab.attr('aria-expanded', 'false');
-			$clickedTab.next('[aria-hidden=false]').attr('aria-hidden', 'true');
-		},
-
-		getNextFocusable: function($panel) {
-			// http://jsfiddle.net/TrueBlueAussie/5WkVW/12/
-			// register jQuery extension
-			$.extend(jQuery.expr[':'], {
-				focusable: function (el, index, selector) {
-					return $(el).is('a, button, :input, [tabindex]');
+						default:
+						console.log('try another key');
+						break;
+					}
 				}
 			});
-
-			if ( $panel.children(':focusable').length > 0 ) {
-				var $canfocus = $(':focusable');
-				var index = $canfocus.index(document.activeElement) + 1;
-				if (index >= $canfocus.length) index = 0;
-				$canfocus.eq(index).focus();
-			}     
 		},
 
 		destroy: function() { }
