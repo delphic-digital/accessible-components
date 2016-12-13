@@ -34,6 +34,10 @@ define(['jquery', './aria'],function($, aria) {
 			$($id).eq(index).focus();
 		},
 
+		goRelated: function(sibling) {
+			sibling.prev('.accordion__tab').focus();
+		},
+
 		destroy: function() { }
 	};
 });

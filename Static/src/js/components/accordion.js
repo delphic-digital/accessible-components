@@ -27,37 +27,28 @@ define(['jquery', './common/events', './common/aria'],function($, events, aria) 
 				let $clickedTab = $(this);
 				let $panel = _.settings.$panel;
 
-				if ( e.type == 'click' ) {
+				// click, enter, or spacebar
+				// open/close the accordion tabs
+				if ( e.type == 'click' || e.keyCode == 13 || e.keyCode == 32 ) {
 					events.openSlide($clickedTab,$panel,'.accordion__icon');
-				} else {
-					switch(e.keyCode) {
-						// enter or spacebar
-						case 13:
-						case 32:
-						events.openSlide($clickedTab,$panel,'.accordion__icon');
-						break;
+				} 
+				// left or up arrow keys
+				// move focus to previous accordion tab
+				else if ( e.keyCode == 37 || e.keyCode == 38 ) {
+					events.goPrev($clickedTab);
+				}
+				// down or right arrow keys
+				// move focus to next accordion tab
+				else if ( e.keyCode == 39 || e.keyCode == 40 ) {
+					events.goNext($clickedTab);
+				}
+			});
 
-						// up or left arrow keys
-						case 37:
-						case 38:
-						events.goPrev($clickedTab);
-						break;
-
-						// down or right arrow keys
-						case 39:
-						case 40:
-						events.goNext($clickedTab);
-						break;
-
-						// tab
-						case 9:
-						//do nothing, functionality already there
-						break;
-
-						default:
-						console.log('try another key');
-						break;
-					}
+			_.settings.$panel.off().on('keydown', function(e) {
+				// CTRL + up arrow key
+				// when in accordion panel, move focus to related accordion tab
+				if ( e.keyCode == 38 && e.ctrlKey ) {
+					events.goRelated($(this));
 				}
 			});
 		},
