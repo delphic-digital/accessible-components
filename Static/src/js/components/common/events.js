@@ -10,13 +10,15 @@ define(['jquery', './aria'],function($, aria) {
 
 		openSlide: function(tab, panel, icon) {
 			var _ = this;
-			tab.next(panel).slideToggle(300);
-			tab.children(icon).toggleClass('open');
+			let tabLink = tab.children('a');
 
-			if ( tab.children(icon).hasClass('open') ){
-				aria.setAriaVisible(tab);
+			tab.next(panel).slideToggle(300);
+			tab.find(icon).toggleClass('open');
+
+			if ( tab.find(icon).hasClass('open') ){
+				aria.setAriaVisible(tabLink);
 			} else {
-				aria.setAriaHidden(tab);
+				aria.setAriaHidden(tabLink);
 			}
 		},
 
@@ -36,6 +38,20 @@ define(['jquery', './aria'],function($, aria) {
 
 		goRelated: function(sibling) {
 			sibling.prev('.accordion__tab').focus();
+		},
+
+		goFirst: function(tab) {
+			let $parent = tab.parents('.accordion');
+			let tabLink = tab.children('a');
+
+			$parent.children(tab).first().children(tabLink).focus();
+		},
+
+		goLast: function(tab) {
+			let $parent = tab.parents('.accordion');
+			let tabLink = tab.children('a');
+			console.log(tab.attr('class') + ':last');
+			$parent.children(tab).last().children(tabLink).focus();
 		},
 
 		destroy: function() { }

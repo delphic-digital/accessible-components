@@ -2,14 +2,25 @@
 {
 	&__tab
 	{
+		display: block;
 		position: relative;
 		margin: 0;
 		padding: rem(10);
+		color: $black;
+		text-decoration: none;
 		background: $silver;
-		border-bottom: 1px solid $white;
-		cursor: pointer;
+		transition: background 0.25s ease;
 
 		&:last-of-type { border-bottom: none; }
+
+		&:hover {
+			color: $black;
+			background: $silver-lt;
+		}
+
+		&-container {
+			border-bottom: 1px solid $white;
+		}
 	}
 
 	&__panel 
@@ -24,7 +35,7 @@
 	{
 		position: absolute;
 		content: "";
-		top: 17px;
+		top: 20px; 
 		right: 20px;
 		width: 18px;
 		height: 2px;

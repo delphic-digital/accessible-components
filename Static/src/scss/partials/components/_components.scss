@@ -2,13 +2,23 @@
 {
 	width: 600px;
 	margin: 0 auto;
-	
-	
 
-	&__item
-	{
+	&__item {
 		margin: rem(30) 0;
 		padding: rem(30);
 		background: $component-background;
+	}
+
+	&__title {
+		margin-top: 0;
+		line-height: 1;
+	}
+
+	&__description {
+		margin-bottom: rem(30);
+
+		li {
+			margin-bottom: rem(15);
+		}
 	}
 }

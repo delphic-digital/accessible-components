@@ -18,17 +18,57 @@
 		<main class="components">
 			<section class="components__item components__item--accordion">
 				<h2 class="components__title">Accordion</h2>
-				<p class="components__description>">A short description of the component</p>
-				<div class="components__example accordion" data-component="accordion">
-					<p class="accordion__tab">Panel 1<span class="accordion__icon"></span></p>
-					<p class="accordion__panel">Thus the night passed. At dawn, the half-extinguished disc of the sun rose above a misty horizon; but it was now possible to recognise objects two miles off. <a href="http://www.google.com" target="_blank">Phileas Fogg</a> and the squad had gone southward; <a href="http://www.google.com" target="_blank">in the south</a> all was still vacancy. It was then seven o'clock.</p>
-					<p class="accordion__tab">Panel 2<span class="accordion__icon"></span></p>
-					<p class="accordion__panel">And now behold Jonah taken up as an anchor and dropped into the sea; when instantly an oily calmness floats out from the east, and the sea is still, as Jonah carries down the gale with him, leaving smooth water behind. He goes down in the whirling heart of such a masterless commotion that he scarce heeds the moment when he drops seething into the yawning jaws awaiting him; and the whale shoots-to all his ivory teeth, like so many white bolts, upon his prison.</p>
-					<p class="accordion__tab">Panel 3<span class="accordion__icon"></span></p>
-					<p class="accordion__panel">Permit me to introduce to you her Majesty, the Queen.</p>
+				<div class="components__description">
+					<p>If focus is on an accordion tab:</p>
+					<ul>
+						<li><span class="code">Click</span>, <span class="code">enter</span>, or <span class="code">spacebar</span> open and close the related accordion panel</li>
+						<li><span class="code">Left</span> or <span class="code">Up</span> arrows move focus to previous accordion tab.  If focus is on the first accordion tab, moves focus to the last accordion header</li>
+						<li><span class="code">Down</span> or <span class="code">Right</span> arrows move focus to next accordion tab.  If focus is on the last accordion tab, moves focus to the first accordion header</li>
+						<li><span class="code">CTRL + HOME</span> moves focus to first accordion tab. Behavior may differ based on browser and use of numpad on laptops.</li>
+						<li><span class="code">CTRL + END</span> moves focus to last accordion tab. Behavior may differ based on browser and use of numpad on laptops.</li>
+					</ul>
+					<!-- <p>If focus is within an accordion panel:</p>
+					<ul>
+						<li><span class="code">CTRL + Up</span> arrow move focus to related accordion tab</li>
+					</ul> -->
 				</div>
+				<dl class="components__example accordion" data-component="accordion">
+					<dt class="accordion__tab-container">
+						<a href="javascript:;" class="accordion__tab">Tab 1
+							<span class="accordion__icon"></span>
+						</a>
+					</dt>
+					<dd class="accordion__panel">
+						<p>Thus the night passed. At dawn, the half-extinguished disc of the sun rose above a misty horizon; but it was now possible to recognise objects two miles off. <a href="http://www.google.com" target="_blank">Phileas Fogg</a> and the squad had gone southward; <a href="http://www.google.com" target="_blank">in the south</a> all was still vacancy. It was then seven o'clock.</p>
+					</dd>
+					<dt class="accordion__tab-container">
+						<a href="javascript:;" class="accordion__tab">Tab 2
+							<span class="accordion__icon"></span>
+						</a>
+					</dt>
+					<dd class="accordion__panel">
+						<p>And now behold Jonah taken up as an anchor and dropped into the sea; when instantly an oily calmness floats out from the east, and the sea is still, as Jonah carries down the gale with him, leaving smooth water behind. He goes down in the whirling heart of such a masterless commotion that he scarce heeds the moment when he drops seething into the yawning jaws awaiting him; and the whale shoots-to all his ivory teeth, like so many white bolts, upon his prison.</p>
+					</dd>
+					<dt class="accordion__tab-container">
+						<a href="javascript:;" class="accordion__tab">Tab 3
+							<span class="accordion__icon"></span>
+						</a>
+					</dt>
+					<dd class="accordion__panel">
+						<p>Permit me to introduce to you her Majesty, the Queen.</p>
+					</dd>
+				</dl>
 			</section>
-			<section class="components__item components__item--accordion">
+
+			<dt role="heading" aria-level="3" class="clearfix">
+				<a role="button" aria-expanded="false" href="#" class="accAccordion" aria-controls="sect1" data-defaultopen="true" id="accordion1id">
+					<span class="icon">
+					<span class="lbl">
+						Personal Information
+					</span>
+				</a>
+			</dt>
+			<!-- <section class="components__item components__item--accordion">
 				<h2 class="components__title">Accordion</h2>
 				<p class="components__description>">A short description of the component</p>
 				<div class="components__example accordion" data-component="accordion">
@@ -37,9 +77,9 @@
 					<p class="accordion__tab">Panel 2<span class="accordion__icon"></span></p>
 					<p class="accordion__panel">And now behold Jonah taken up as an anchor and dropped into the sea; when instantly an oily <a href="http://www.google.com" target="_blank">calmness</a> floats out from the east, and the sea is still, as Jonah carries down the gale with him, leaving smooth water behind. He goes down in the whirling heart of such a masterless commotion that he scarce heeds the moment when he drops seething into the yawning jaws awaiting him; and the whale shoots-to all his ivory teeth, like so many white bolts, upon his prison.</p>
 					<p class="accordion__tab">Panel 3<span class="accordion__icon"></span></p>
-					<p class="accordion__panel">Permit me to introduce to you her Majesty, the Queen.</p>
+					<p class="accordion__panel">Permit me to <a href="http://www.google.com" target="_blank">introduce</a> to you her Majesty, the Queen.</p>
 				</div>
-			</section>
+			</section> -->
 		</main>
 
 		<script data-main="/Static/src/js/skeletor.main" src="/Static/dist/js/lib/require.js"></script>
