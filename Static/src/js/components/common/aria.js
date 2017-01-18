@@ -8,54 +8,58 @@ define(['jquery'],function($) {
 		init: function() {
 		},
 
-		bindAccordion: function($accordion,$tab,$panel) {
+		bindAccordion: function($accordion,$heading,$tab,$panel) {
 			var _ = this;
 
 			$($accordion).each(function(i){
 				var $this = $(this);
 				$this.attr('id', 'accordion_' + i);
 
-				_.setAccordionAttributes($this,$tab,$panel, i);
+				_.setAccordionAttributes($this,$heading,$tab,$panel, i);
 			});
 		},
 
-		setAccordionAttributes: function($this,$tab,$panel, i) {
-			$this
-				.attr({
-					'role': 'tablist',
-					'multiselectable': 'true'
+		setAccordionAttributes: function($this,$heading,$tab,$panel, i) {
+			console.log(i);
+			$this.find($heading).each(function(){
+				var $this = $(this);
+				$this.attr({
+					'role': 'heading',
+					'aria-level': '3',
+				});
 			});
 
 			$this.find($tab).each(function(j){
 				var $this = $(this);
 				$this.attr({
 					'id': 'a' + i + '_tab' + j,
-					'role': 'tab',
-					'tabindex': '0',
+					'role': 'button',
 					'aria-expanded': 'false',
 					'aria-controls': 'a' + i + '_panel' + j
 				});
-			})
+			});
 				
 			$this.find($panel).each(function(j){
 				var $this = $(this);
 				$this.attr({
 					'id': 'a' + i + '_panel' + j,
-					'role': 'tabpanel',
+					'role': 'region',
 					'aria-hidden': 'true',
 					'aria-labelledby': 'a' + i + '_tab' + j
 				});
-			})
+			});
 		},
 
 		setAriaVisible: function($clickedTab) {
+			// clickedTab is the link within the dt element
 			$clickedTab.attr('aria-expanded', 'true');
-			$clickedTab.next('[aria-hidden=true]').attr('aria-hidden', 'false');
+			// the related panel is the dd element after the dt element, so we need to move up a level
+			$clickedTab.parent().next('[aria-hidden=true]').attr('aria-hidden', 'false');
 		},
 
 		setAriaHidden: function($clickedTab) {
 			$clickedTab.attr('aria-expanded', 'false');
-			$clickedTab.next('[aria-hidden=false]').attr('aria-hidden', 'true');
+			$clickedTab.parent().next('[aria-hidden=false]').attr('aria-hidden', 'true');
 		},
 
 		destroy: function() { }

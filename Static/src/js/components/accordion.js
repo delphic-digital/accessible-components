@@ -4,9 +4,9 @@ define(['jquery', './common/events', './common/aria'],function($, events, aria) 
 
 		settings: {
 			$accordion: $('.accordion'),
+			$heading: $('.accordion__tab-container'),
 			$tab: $('.accordion__tab'),
-			$panel: $('.accordion__panel'),
-			$panelLink: $('.accordion__panel a')
+			$panel: $('.accordion__panel')
 		},
 
 		init: function() {
@@ -18,7 +18,7 @@ define(['jquery', './common/events', './common/aria'],function($, events, aria) 
 
 		bindAria: function() {
 			var _ = this;
-			aria.bindAccordion(_.settings.$accordion, _.settings.$tab, _.settings.$panel);
+			aria.bindAccordion(_.settings.$accordion, _.settings.$heading, _.settings.$tab, _.settings.$panel);
 		},
 
 		initEvents: function() {
