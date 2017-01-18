@@ -5,7 +5,8 @@ define(['jquery', './common/events', './common/aria'],function($, events, aria) 
 		settings: {
 			$accordion: $('.accordion'),
 			$tab: $('.accordion__tab'),
-			$panel: $('.accordion__panel')
+			$panel: $('.accordion__panel'),
+			$panelLink: $('.accordion__panel a')
 		},
 
 		init: function() {
@@ -24,44 +25,39 @@ define(['jquery', './common/events', './common/aria'],function($, events, aria) 
 			var _ = this;
 
 			_.settings.$tab.off().on('click keydown', function(e) {
-				e.preventDefault();
-
 				let $clickedTab = $(this).parent(); // a tag is nested within tab container, easier to deal with tab-container for events
 				let $panel = _.settings.$panel;
 
 				// click, enter, or spacebar
 				// open/close the accordion tabs
 				if ( e.type == 'click' || e.keyCode == 13 || e.keyCode == 32 ) {
+					e.preventDefault();
 					events.openSlide($clickedTab,$panel,'.accordion__icon');
 				} 
 				// left or up arrow keys
 				// move focus to previous accordion tab
 				else if ( e.keyCode == 37 || e.keyCode == 38 ) {
+					e.preventDefault();
 					events.goPrev($clickedTab);
 				}
 				// down or right arrow keys
 				// move focus to next accordion tab
 				else if ( e.keyCode == 39 || e.keyCode == 40 ) {
+					e.preventDefault();
 					events.goNext($clickedTab);
 				}
-				// CTRL + HOME key || CTRL + HOME NUMPAD key
+				// HOME key || HOME NUMPAD key
 				// move focus to first accordion tab
-				else if ( e.keyCode == 36 && e.ctrlKey || e.keyCode == 103 && e.ctrlKey ) {
+				else if ( e.keyCode == 36 || e.keyCode == 103 ) {
+					e.preventDefault();
 					events.goFirst($clickedTab);
 				}
-				// CTRL + END key || CTRL + END NUMPAD key
+				// END key || END NUMPAD key
 				// move focus to last accordion tab
-				else if ( e.keyCode == 35 && e.ctrlKey || e.keyCode == 97 && e.ctrlKey ) {
+				else if ( e.keyCode == 35 || e.keyCode == 97 ) {
+					e.preventDefault();
 					events.goLast($clickedTab);
 				}
-			});
-
-			_.settings.$panel.off().on('keydown', function(e) {
-				// CTRL + up arrow key
-				// when in accordion panel, move focus to related accordion tab
-				// if ( e.keyCode == 36 && e.ctrlKey ) {
-				// 	events.goRelated($(this));
-				// }
 			});
 		},
 

@@ -41,17 +41,13 @@ define(['jquery', './aria'],function($, aria) {
 		},
 
 		goFirst: function(tab) {
-			let $parent = tab.parents('.accordion');
-			let tabLink = tab.children('a');
-
-			$parent.children(tab).first().children(tabLink).focus();
+			let firstTab = "." + tab.attr('class') + ":first a";
+			$(firstTab).focus();
 		},
 
 		goLast: function(tab) {
-			let $parent = tab.parents('.accordion');
-			let tabLink = tab.children('a');
-			console.log(tab.attr('class') + ':last');
-			$parent.children(tab).last().children(tabLink).focus();
+			let lastTab = "." + tab.attr('class') + ":last a";
+			$(lastTab).focus();
 		},
 
 		destroy: function() { }
