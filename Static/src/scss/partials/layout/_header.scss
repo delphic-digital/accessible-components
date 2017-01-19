@@ -15,3 +15,9 @@ header {
 		padding: rem(30);
 	}
 }
+
+@include breakpoint($large) {
+	header {
+		padding: rem(40) 0;
+	}
+}

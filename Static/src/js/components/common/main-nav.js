@@ -41,14 +41,7 @@ define(['jquery','onMediaQuery'],function($,MQ) {
 		},
 
 		sticky: function() {
-			var marginL = $('.container').offset().left;
-			$('.sticky-fixed').css("marginLeft",marginL);
-
-			$(window).resize(function() {
-				var marginL = $('.container').offset().left;
-			$('.sticky-fixed').css("marginLeft",marginL);
-			});
-
+			var _ = this;
 			$(window).scroll(function() {
 				var $navPos = $('.js-sticky-nav').offset().top;
 				var $windowPos = $(window).scrollTop();
@@ -56,9 +49,20 @@ define(['jquery','onMediaQuery'],function($,MQ) {
 	    			var width = $('.js-sticky-nav').innerWidth();
 					$('.main-nav__js-wrapper').addClass('sticky-fixed');
 					$('.main-nav__js-wrapper').css('width', width);
+					_.fixedPosition();
 	    		} else {
 	    			$('.main-nav__js-wrapper').removeClass('sticky-fixed');
 	    		}
+			});
+		},
+
+		fixedPosition: function() {
+			var marginL = $('.container').offset().left;
+			$('.sticky-fixed').css("left",marginL);
+
+			$(window).resize(function() {
+				var marginL = $('.container').offset().left;
+				$('.sticky-fixed').css("left",marginL);
 			});
 		},
 

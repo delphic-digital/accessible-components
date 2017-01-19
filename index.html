@@ -15,7 +15,7 @@
 
 	</head>
 	<body>
-		<header>
+		<header class="container">
 			<h1>Accessible Components</h1>
 		</header>
 		<div class="container">
@@ -76,11 +76,41 @@
 				<section id="form" class="components__item components__item--form">
 					<h2 class="components__title">Form</h2>
 					<div class="components__description">
-						<label>First Name</label>
-						<input type="text">
+						Here's a form
 					</div>
 					<form class="components__example form" data-component="form">
-						
+						<label for="name">Name</label>
+						<input id="name" type="text" name="textfield">
+						<label for="hopes">Tell us your hopes and dreams</label>
+						<textarea id="hopes" name="textarea"></textarea>
+						<fieldset>
+							<legend>Which artists do you like?</legend>
+							<input id="Modigliani" type="checkbox" name="artist" value="Modigliani">
+							<label for="Modigliani">Amedeo Modigliani</label><br>
+							<input id="Cezanne" type="checkbox" name="artist" value="Cezanne">
+							<label for="Cezanne">Paul Cezanne</label><br>
+							<input id="Neel" type="checkbox" name="artist" value="Neel">
+							<label for="Neel">Alice Neel</label><br>
+							<input id="Goldsworthy" type="checkbox" name="artist" value="Goldsworthy">
+							<label for="Goldsworthy">Andy Goldsworthy</label>
+						</fieldset>
+						<fieldset>
+							<legend>Pick your favorite fruit</legend>
+							<input id="kiwi" type="radio" name="fruit" value="kiwi">
+							<label for="kiwi">Kiwi</label><br>
+							<input id="banana" type="radio" name="fruit" value="banana">
+							<label for="banana">Banana</label><br>
+							<input id="blueberries" type="radio" name="fruit" value="blueberries">
+							<label for="blueberries">Blueberries</label>
+						</fieldset>
+						<label for="favcity">Choose your favorite city!</label>
+						<select id="favcity" name="select">
+							<option value="1">Philadelphia, PA</option>
+							<option value="2">St. Paul, MN</option>
+							<option value="3">Flagstaff, AZ</option>
+							<option value="4">Brooklyn, NY</option>
+						</select>
+						<input type="submit" name="submit" value="Submit">
 					</form>
 				</section>
 			</main>
