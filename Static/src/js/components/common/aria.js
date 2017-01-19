@@ -20,7 +20,6 @@ define(['jquery'],function($) {
 		},
 
 		setAccordionAttributes: function($this,$heading,$tab,$panel, i) {
-			console.log(i);
 			$this.find($heading).each(function(){
 				var $this = $(this);
 				$this.attr({

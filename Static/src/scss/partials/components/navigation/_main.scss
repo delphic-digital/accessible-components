@@ -13,16 +13,101 @@
 
 /* Mobile main nav styles */
 .main-nav {
-	&__list{}
-	&__item{}
+	position: relative;
+	margin: 0 rem(20) rem(30);
+	padding: rem(10);
+	background: $component-background;
+
+	&__title {
+		margin: 0;
+		text-transform: uppercase;
+	}
+
+	&__list {
+		display: none;
+		padding-left: 0;
+		list-style: none;
+	}
+
+	&__item {
+		padding: 0 0 rem(5);
+	}
+
 	&__link{
 		&--active {}
+	}
+
+	// adapted from: https://gist.github.com/elijahmanor/9331915#file-jquery-js
+	&__mobile-btn {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		cursor: pointer; 
+		padding: 9px 22px 16px 0px;
+
+		span {
+			&, &:before, &:after {
+				border-radius: 2px;
+				height: 2px;
+				width: 22px;
+				background: $black;
+				position: absolute;
+				display: block;
+				content: '';
+				transition: all 500ms ease-in-out;
+			}
+
+			& { transition: all 250ms ease-in-out; }
+
+			&:before {
+				top: -6px;
+			}
+
+			&:after {
+				bottom: -6px;
+			}
+		}
+
+		&.active span {
+			background-color: transparent;
+			width: 0;
+
+			&:before, &:after {
+				top: 0;
+			}
+
+			&:before {
+				transform: rotate(45deg);
+			}
+
+			&:after {
+				transform: rotate(-45deg);
+			}
+		}
 	}
 }
 
 @include breakpoint($medium){
 	.main-nav {
-		/* Tablet main nav styles */
+		margin: 0;
+		@include span(4);
+		padding: rem(30);
+
+		&__mobile-btn {
+			display: none;
+		}
+
+		&__list {
+			display: block;
+		}
+
+		&__js-wrapper.sticky-fixed {
+			position: fixed;
+			top: 0;
+			left: 0;
+			padding: rem(30);
+			background: $component-background;
+		}
 	}
 }
 

@@ -5,13 +5,11 @@
 		display: block;
 		position: relative;
 		margin: 0;
-		padding: rem(10);
+		padding: rem(10) rem(20);
 		color: $black;
 		text-decoration: none;
 		background: $silver;
 		transition: background 0.25s ease;
-
-		&:last-of-type { border-bottom: none; }
 
 		&:hover {
 			color: $black;
@@ -20,6 +18,8 @@
 
 		&-container {
 			border-bottom: 1px solid $white;
+
+			&:last-of-type { border-bottom: none; }
 		}
 	}
 
@@ -27,8 +27,11 @@
 	{ 
 		display: none; 
 		margin: 0;
-		padding: rem(20) rem(10);
+		padding: rem(20);
 		background: $white;
+
+		p:first-child { margin-top: 0; }
+		p:last-child { margin-bottom: 0; }
 	}
 
 	&__icon
