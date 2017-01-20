@@ -24,7 +24,8 @@
     "skeletor.browsehappy": "*",
     "skeletor.sass.utilities": "*",
     "skeletor.sass.helpers": "*",
-    "skeletor.util.componentLoader": "*"
+    "skeletor.util.componentLoader": "*",
+    "velocity": "^1.4.1"
   },
   "overrides": {
     "onMediaQuery": {

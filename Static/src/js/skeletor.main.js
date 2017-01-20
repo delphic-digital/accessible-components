@@ -7,7 +7,9 @@ require.config({
 		"skeletor.core": "../../../bower_components/skeletor.core/skeletor.core",
 		"ua-parser-js": "../../../bower_components/ua-parser-js/src/ua-parser",
 		"skeletor.util.componentLoader": "../../../bower_components/skeletor.util.componentLoader/skeletor.util.componentLoader",
-		svg4everybody: "../../../bower_components/svg4everybody/dist/svg4everybody"
+		svg4everybody: "../../../bower_components/svg4everybody/dist/svg4everybody",
+		velocity: "../../../bower_components/velocity/velocity",
+		"velocity.ui": "../../../bower_components/velocity/velocity.ui"
 	},
 	packages: [
 

@@ -1,4 +1,4 @@
-define(['jquery', './aria'],function($, aria) {
+define(['jquery', 'velocity', './aria'],function($, velocity, aria) {
 
 	return {
 
@@ -9,10 +9,15 @@ define(['jquery', './aria'],function($, aria) {
 		},
 
 		openSlide: function(tab, panel, icon) {
-			var _ = this;
-			let tabLink = tab.children('a');
+			var _ = this,
+				tabLink = tab.children('a'),
+				isOpen = tab.next(panel).is(':visible'),
+				slideDir = isOpen ? 'slideUp' : 'slideDown';
 
-			tab.next(panel).slideToggle(300);
+			tab.next(panel).velocity(slideDir, {
+				easing: 'easeOutQuart', 
+				duration: 300
+			});
 			tab.find(icon).toggleClass('open');
 
 			if ( tab.find(icon).hasClass('open') ){
