@@ -76,9 +76,16 @@
 				<section id="form" class="components__item components__item--form">
 					<h2 class="components__title">Form</h2>
 					<div class="components__description">
-						Here's a form
+						<p>The default keyboard events work for form accessibility:</p>
+						<ul>
+							<li><span class="code">TAB</span> moves through each form element.</li>
+							<li>When focus is on a radio button or checkbox, <span class="code">spacebar</span> selects/unselects the focused element.
+							<li>When focus is on a select bar, <span class="code">down</span> or <span class="code">up</span> arrows move through the options.  <span class="code">Enter</span> opens the select bar. 
+							<li>When focus is on the submit button, <span class="code">enter</span> submits the form.</li>
+						</ul>
 					</div>
 					<form class="components__example form" data-component="form">
+						<h3 class="form__title">Fun Facts</h3>
 						<label for="name">Name</label>
 						<input id="name" type="text" name="textfield">
 						<label for="hopes">Tell us your hopes and dreams</label>

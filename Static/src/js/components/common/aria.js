@@ -49,6 +49,28 @@ define(['jquery'],function($) {
 			});
 		},
 
+		bindForm: function($form) {
+			var _ = this;
+
+			$($form).each(function(i){
+				var $this = $(this);
+				$this.attr('id', 'form_' + i);
+
+				_.setFormAttributes($this, i);
+			});
+		},
+
+		setFormAttributes: function($this, i) {
+			$this.attr({
+				'role': 'form',
+				'aria-labelledby': 'form_' + i + '_title'
+			});
+
+			$this.find('.form__title').attr({
+				'id': 'form_' + i + '_title'
+			})
+		},
+
 		setAriaVisible: function($clickedTab) {
 			// clickedTab is the link within the dt element
 			$clickedTab.attr('aria-expanded', 'true');

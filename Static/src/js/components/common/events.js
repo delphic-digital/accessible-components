@@ -18,6 +18,7 @@ define(['jquery', 'velocity', './aria'],function($, velocity, aria) {
 				easing: 'easeOutQuart', 
 				duration: 300
 			});
+			
 			tab.find(icon).toggleClass('open');
 
 			if ( tab.find(icon).hasClass('open') ){

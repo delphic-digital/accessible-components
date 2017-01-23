@@ -1,0 +1,40 @@
+.form {
+	label {
+		display: block; 
+		margin-bottom: rem(5);
+	}
+
+	fieldset label {
+		display: inline-block;
+	}
+
+	input,
+	textarea,
+	fieldset,
+	select {
+		width: 100%;
+		max-width: 500px;
+		margin-bottom: rem(20);
+	}
+
+	input[type="radio"],
+	input[type="checkbox"],
+	input[type="submit"] {
+		width: auto;
+		margin: 0;
+	}
+
+	input[type="submit"] {
+		display: block;
+		padding: rem(5) rem(20);
+		cursor: pointer;
+		background: $white;
+		border: 1px solid $silver;
+		border-radius: 18px;
+		transition: background 200ms ease;
+
+		&:hover {
+			background: $silver;
+		}
+	}
+}

@@ -3,6 +3,7 @@ define(['jquery','onMediaQuery'],function($,MQ) {
 	return {
 
 		settings: {
+			$mainNav: $('.main-nav__list')
 		},
 
 		init: function() {
@@ -12,8 +13,14 @@ define(['jquery','onMediaQuery'],function($,MQ) {
 			_.sticky();
 
 			$('.js-toggle').on('click', function() {
-			  $(this).toggleClass('active');
-			  $('.main-nav__list').slideToggle();
+				var isOpen = _.settings.$mainNav.is(':visible'),
+					slideDir = isOpen ? 'slideUp' : 'slideDown';
+
+				$(this).toggleClass('active');
+				_.settings.$mainNav.velocity(slideDir, {
+					easing: 'easeOutQuart', 
+					duration: 300
+				});
 			});
 		},
 
@@ -33,9 +40,9 @@ define(['jquery','onMediaQuery'],function($,MQ) {
 			currentContext = MQ.getContext();
 
 			if (currentContext == 'tablet' || currentContext == 'desktop') {
-				$('.main-nav__list').css('display', 'block');
+				_.settings.$mainNav.css('display', 'block');
 			} else {
-				$('.main-nav__list').css('display', 'none');
+				_.settings.$mainNav.css('display', 'none');
 				$('.js-toggle').removeClass('active');
 			}
 		},
