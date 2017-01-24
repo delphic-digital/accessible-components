@@ -24,6 +24,9 @@
 					<p class="main-nav__title">Menu</p>
 					<a class="main-nav__mobile-btn js-toggle" href="javascript:;"><span></span></a>
 					<ul class="main-nav__list">
+					<li class="main-nav__item">
+							<a class="main-nav__link" href="#intro">Intro</a>
+						</li>
 						<li class="main-nav__item">
 							<a class="main-nav__link" href="#accordion">Accordion</a>
 						</li>
@@ -34,14 +37,22 @@
 				</div>
 			</nav>
 			<main class="components">
+				<section id="intro" class="components__item components__item--intro">
+					<h2 class="components__title">Introduction</h2>
+					<div class="components__description">
+						<p>Below are a number of components that have been built following the recommendations of the <a href="https://www.w3.org/TR/wai-aria-practices" target="_blank">WAI-ARIA Authoring Practices 1.1</a></p>
+						<p>Each section describes how the component can be interacted with using the keyboard.  In addition, I'm adding ARIA attributes with javascript, which relies on the components following the structures and naming conventions in the examples.
+					</p>
+				</section>
 				<section id="accordion" class="components__item components__item--accordion">
 					<h2 class="components__title">Accordion</h2>
 					<div class="components__description">
 						<p>If focus is on an accordion tab:</p>
 						<ul>
-							<li><span class="code">Click</span>, <span class="code">enter</span>, or <span class="code">spacebar</span> open and close the related accordion panel</li>
-							<li><span class="code">Left</span> or <span class="code">Up</span> arrows move focus to previous accordion tab.  If focus is on the first accordion tab, moves focus to the last accordion header</li>
-							<li><span class="code">Down</span> or <span class="code">Right</span> arrows move focus to next accordion tab.  If focus is on the last accordion tab, moves focus to the first accordion header</li>
+							<li><span class="code">Click</span>, <span class="code">enter</span>, or <span class="code">spacebar</span> open and close the related accordion panel.</li>
+							<li><span class="code">Left</span> or <span class="code">Up</span> arrows move focus to previous accordion tab.  If focus is on the first accordion tab, moves focus to the last accordion header.</li>
+							<li><span class="code">Down</span> or <span class="code">Right</span> arrows move focus to next accordion tab.  If focus is on the last accordion tab, moves focus to the first accordion header.</li>
+							<li><span class="code">Tab</span> moves focus to next accordion tab (or the next focusable element within an open tab panel). If focus is on the last accordion tab, moves focus out of the accordion to the next focusable element on the page.</li>
 							<li><span class="code">HOME</span> moves focus to first accordion tab.</li>
 							<li><span class="code">END</span> moves focus to last accordion tab.</li>
 						</ul>
@@ -78,45 +89,66 @@
 					<div class="components__description">
 						<p>The default keyboard events work for form accessibility:</p>
 						<ul>
-							<li><span class="code">TAB</span> moves through each form element.</li>
-							<li>When focus is on a radio button or checkbox, <span class="code">spacebar</span> selects/unselects the focused element.
-							<li>When focus is on a select bar, <span class="code">down</span> or <span class="code">up</span> arrows move through the options.  <span class="code">Enter</span> opens the select bar. 
+							<li><span class="code">TAB</span> moves through each form element. If focus is on the focusable element in the form, moves focus out of the form to the next focusable element on the page.</li>
+							<li>When focus is on a radio button or checkbox, <span class="code">spacebar</span> selects/unselects the focused element.</li>
+							<li>When focus is on a radio button, <span class="code">down</span> arrow selects the focused element. If on the last radio button, the <span class="code">down</span> arrow focuses on and selects the first radio button.</li>
+							<li>When focus is on a select bar, <span class="code">down</span> or <span class="code">up</span> arrows move through the options.  <span class="code">Enter</span> opens the select bar.</li> 
 							<li>When focus is on the submit button, <span class="code">enter</span> submits the form.</li>
 						</ul>
 					</div>
 					<form class="components__example form" data-component="form">
 						<h3 class="form__title">Fun Facts</h3>
-						<label for="name">Name</label>
-						<input id="name" type="text" name="textfield">
-						<label for="hopes">Tell us your hopes and dreams</label>
-						<textarea id="hopes" name="textarea"></textarea>
+						<div class="form__item">
+							<label for="name">Name</label>
+							<input id="name" type="text" name="textfield">
+						</div>
+						<div class="form__item">
+							<label for="hopes">Tell us your hopes and dreams</label>
+							<textarea id="hopes" name="textarea"></textarea>
+						</div>
 						<fieldset>
 							<legend>Which artists do you like?</legend>
-							<input id="Modigliani" type="checkbox" name="artist" value="Modigliani">
-							<label for="Modigliani">Amedeo Modigliani</label><br>
-							<input id="Cezanne" type="checkbox" name="artist" value="Cezanne">
-							<label for="Cezanne">Paul Cezanne</label><br>
-							<input id="Neel" type="checkbox" name="artist" value="Neel">
-							<label for="Neel">Alice Neel</label><br>
-							<input id="Goldsworthy" type="checkbox" name="artist" value="Goldsworthy">
-							<label for="Goldsworthy">Andy Goldsworthy</label>
+							<div class="form__item">
+								<input id="Modigliani" type="checkbox" name="artist" value="Modigliani">
+								<label for="Modigliani">Amedeo Modigliani</label>
+							</div>
+							<div class="form__item">
+								<input id="Cezanne" type="checkbox" name="artist" value="Cezanne">
+								<label for="Cezanne">Paul Cezanne</label>
+							</div>
+							<div class="form__item">
+								<input id="Neel" type="checkbox" name="artist" value="Neel">
+								<label for="Neel">Alice Neel</label>
+							</div>
+							<div class="form__item">
+								<input id="Goldsworthy" type="checkbox" name="artist" value="Goldsworthy">
+								<label for="Goldsworthy">Andy Goldsworthy</label>
+							</div>
 						</fieldset>
 						<fieldset>
 							<legend>Pick your favorite fruit</legend>
-							<input id="kiwi" type="radio" name="fruit" value="kiwi">
-							<label for="kiwi">Kiwi</label><br>
-							<input id="banana" type="radio" name="fruit" value="banana">
-							<label for="banana">Banana</label><br>
-							<input id="blueberries" type="radio" name="fruit" value="blueberries">
-							<label for="blueberries">Blueberries</label>
+							<div class="form__item">
+								<input id="kiwi" type="radio" name="fruit" value="kiwi">
+								<label for="kiwi">Kiwi</label>
+							</div>
+							<div class="form__item">
+								<input id="banana" type="radio" name="fruit" value="banana">
+								<label for="banana">Banana</label>
+							</div>
+							<div class="form__item">
+								<input id="blueberries" type="radio" name="fruit" value="blueberries">
+								<label for="blueberries">Blueberries</label>
+							</div>
 						</fieldset>
-						<label for="favcity">Choose your favorite city!</label>
-						<select id="favcity" name="select">
-							<option value="1">Philadelphia, PA</option>
-							<option value="2">St. Paul, MN</option>
-							<option value="3">Flagstaff, AZ</option>
-							<option value="4">Brooklyn, NY</option>
-						</select>
+						<div class="form__item">
+							<label for="favcity">Choose your favorite city!</label>
+							<select id="favcity" name="select">
+								<option value="1">Philadelphia, PA</option>
+								<option value="2">St. Paul, MN</option>
+								<option value="3">Flagstaff, AZ</option>
+								<option value="4">Brooklyn, NY</option>
+							</select>
+						</div>
 						<input type="submit" name="submit" value="Submit">
 					</form>
 				</section>

@@ -2,10 +2,16 @@
 	label {
 		display: block; 
 		margin-bottom: rem(5);
+		font-weight: bold;
 	}
 
 	fieldset label {
 		display: inline-block;
+		font-weight: normal;
+	}
+
+	legend {
+		font-weight: bold;
 	}
 
 	input,
@@ -36,5 +42,10 @@
 		&:hover {
 			background: $silver;
 		}
+	}
+
+	&__description {
+		display: block;
+		margin-bottom: rem(5);
 	}
 }

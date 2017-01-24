@@ -68,6 +68,26 @@ define(['jquery'],function($) {
 
 			$this.find('.form__title').attr({
 				'id': 'form_' + i + '_title'
+			});
+
+			$this.find('.form__item').each(function(j) {
+				var $this = $(this);
+
+				$this.find('label').attr({
+					'id': 'form_' + i + '_label' + j
+				});
+
+				$this.find('input').attr({
+					'aria-labelledby': 'form_' + i + '_label' + j
+				});
+
+				$this.find('textarea').attr({
+					'aria-labelledby': 'form_' + i + '_label' + j
+				});
+
+				$this.find('select').attr({
+					'aria-labelledby': 'form_' + i + '_label' + j
+				});
 			})
 		},
 
