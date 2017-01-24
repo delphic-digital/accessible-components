@@ -18,6 +18,8 @@ header {
 
 @include breakpoint($large) {
 	header {
-		padding: rem(40) 0;
+		max-width: 1224px;
+		margin: 0 auto;
+		padding: rem(40) rem(30);
 	}
 }

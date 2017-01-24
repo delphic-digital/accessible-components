@@ -18,6 +18,18 @@ html {
 
 @include breakpoint($medium) {
  	.container {
- 		@include container();
+ 		display: flex;
+ 		justify-content: center;
+ 		align-items: flex-start;
+ 		max-width: 1224px;
+ 		margin: 0 auto $tablet-space;
+ 		padding: 0 $tablet-space;
+ 	}
+}
+
+@include breakpoint($large) {
+ 	.container {
+ 		margin: 0 auto $desktop-space;
+ 		padding: 0 $desktop-space;
  	}
 }

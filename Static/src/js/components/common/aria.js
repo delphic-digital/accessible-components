@@ -70,6 +70,10 @@ define(['jquery'],function($) {
 				'id': 'form_' + i + '_title'
 			});
 
+			$this.find('fieldset').attr({
+				'role': 'group'
+			});
+
 			$this.find('.form__item').each(function(j) {
 				var $this = $(this);
 
@@ -88,7 +92,9 @@ define(['jquery'],function($) {
 				$this.find('select').attr({
 					'aria-labelledby': 'form_' + i + '_label' + j
 				});
-			})
+			});
+
+			$this.find('input[type=checkbox]')
 		},
 
 		setAriaVisible: function($clickedTab) {

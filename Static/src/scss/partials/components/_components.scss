@@ -26,12 +26,25 @@
 
 @include breakpoint($medium) {
 	.components {
-		@include span(8);
+		flex-grow: 3;
 		margin: 0;
 
 		&__item {
-			margin: rem(30) 0;
-			padding: rem(30);
+			margin: $tablet-space 0;
+			padding: $tablet-space;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+
+@include breakpoint($large) {
+	.components {
+		&__item {
+			margin: $desktop-space 0;
+			padding: $desktop-space;
 		}
 	}
 }

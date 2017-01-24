@@ -89,9 +89,9 @@
 
 @include breakpoint($medium){
 	.main-nav {
-		margin: 0;
-		@include span(4);
-		padding: rem(30);
+		margin: 0 $tablet-space 0 0;
+		flex: 1 0 25%;
+		padding: $tablet-space;
 
 		&__mobile-btn {
 			display: none;
@@ -104,8 +104,7 @@
 		&__js-wrapper.sticky-fixed {
 			position: fixed;
 			top: 0;
-			left: 0;
-			padding: rem(30);
+			padding: $tablet-space;
 			background: $component-background;
 		}
 	}
@@ -113,6 +112,11 @@
 
 @include breakpoint($large){
 	.main-nav {
-		/* Desktop main nav styles */
+		margin: 0 $desktop-space 0 0;
+		padding: $desktop-space;
+
+		&__js-wrapper.sticky-fixed {
+			padding: $desktop-space;
+		}
 	}
 }

@@ -53,18 +53,27 @@ define(['jquery','onMediaQuery'],function($,MQ) {
 				var $navPos = $('.js-sticky-nav').offset().top;
 				var $windowPos = $(window).scrollTop();
 	    		if ($windowPos > $navPos){
-	    			var width = $('.js-sticky-nav').innerWidth();
+	    			var width = $('.js-sticky-nav').outerWidth();
 					$('.main-nav__js-wrapper').addClass('sticky-fixed');
 					$('.main-nav__js-wrapper').css('width', width);
 					_.fixedPosition();
 	    		} else {
 	    			$('.main-nav__js-wrapper').removeClass('sticky-fixed');
+	    			$('.main-nav__js-wrapper').removeAttr('style');
 	    		}
 			});
 		},
 
 		fixedPosition: function() {
-			var marginL = $('.container').offset().left;
+			currentContext = MQ.getContext();
+
+			if (currentContext == 'tablet') {
+				var padding = 20;
+			} else if (currentContext == 'desktop') {
+				var padding = 30;
+			}
+
+			var marginL = $('.container').offset().left + padding;
 			$('.sticky-fixed').css("left",marginL);
 
 			$(window).resize(function() {
