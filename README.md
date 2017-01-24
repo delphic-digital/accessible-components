@@ -11,9 +11,9 @@ accessible-components uses [Skeletor](https://github.com/delphic-digital/Skeleto
 * Install Bower `npm install -g bower`
 
 ### Set-up
-* Fork/Clone/Download the Skeletor repository into your machine.
+* Fork/Clone/Download this repository into your machine.
 * Open a terminal and install the Node.Js dependencies by running `npm install` in your project directory.
 * Install client side dependencies with bower by running `bower install` in your project directory.
-* Run gulp to automatically open a new Skeletor project running on `localhost:3000`.
+* Run gulp to automatically open the project running on `localhost:3000`.
 
 For more details, checkout the [Fednet](https://fednet.herokuapp.com/skeletor/setup)
