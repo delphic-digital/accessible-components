@@ -1,0 +1,74 @@
+.accordion {
+	&__tab {
+		display: block;
+		position: relative;
+		margin: 0;
+		padding: rem(10) rem(20);
+		color: black;
+		text-decoration: none;
+		background: silver;
+		transition: background 0.25s ease;
+
+		&:hover {
+			color: black;
+			background: grey;
+		}
+
+		&-container {
+			border-bottom: 1px solid white;
+
+			&:last-of-type { border-bottom: none; }
+		}
+	}
+
+	&__panel { 
+
+		//use the aria attributes to hide / show (they're the single source of truth here)
+		&[aria-hidden="true"] {
+			display: none;
+			position: absolute;
+			max-height: 0;
+			overflow: hidden;
+			padding-top: 0;
+			padding-bottom: 0;
+		}
+
+		//display: none; 
+		margin: 0;
+		padding: rem(20);
+		background: white;
+
+		p:first-child { margin-top: 0; }
+		p:last-child { margin-bottom: 0; }
+	}
+
+	&__icon {
+		position: absolute;
+		content: "";
+		top: 20px; 
+		right: 20px;
+		width: 18px;
+		height: 2px;
+		background: #fff;
+		border-radius: 1px;
+
+		&:after {
+			position: absolute;
+			content: "";
+			top: -8px;
+			right: 8px;
+			width: 2px;
+			height: 18px;
+			background: #fff;
+			border-radius: 1px;
+			transition: opacity 300ms ease;
+		}
+
+		&.open {
+			&:after { 
+				opacity: 0; 
+				transition: opacity 300ms ease;
+			}
+		}
+	}
+}
